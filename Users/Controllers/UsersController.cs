@@ -3,7 +3,6 @@ using Users.Daos;
 using Users.Interfaces;
 using Users.Models;
 using Users.Models.UsersModels;
-using Users.ResultPattern;
 
 namespace Users.Controllers
 {
@@ -18,18 +17,10 @@ namespace Users.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<OperationResult<string>>> Put(CreateUserModel users)
+        public IActionResult Put(CreateUserModel users)
         {
-
-            var model = new Entities.Users()
-            {
-                Name = users.Name,
-                Email = users.Email,
-                Birthdate = users.Birthdate
-            };
-
-           var result = await _daoUsers.CreateAsync(model);
-           return result;
+           return Ok();
         }
+
     }
 }
